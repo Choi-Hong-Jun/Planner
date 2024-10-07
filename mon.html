@@ -222,7 +222,7 @@
             let activity = prompt(`${hour}시의 활동을 입력하세요:`);
             if (activity) {
                 document.getElementById(`activity-${hour}`).textContent = activity;
-		saveActivity(hour, activityName);
+		saveActivity(hour, activity);
             }
         }
 
@@ -230,7 +230,7 @@
             localStorage.setItem(`activity-${hour}`, activityName);
         }
 
-	function loadActivities() {
+        function loadActivities() {
             for (let hour = 1; hour <= 24; hour++) {
                 const activity = localStorage.getItem(`activity-${hour}`);
                 if (activity) {
@@ -239,7 +239,7 @@
             }
         }
 
-	window.onload = loadActivities;
+        window.onload = loadActivities;
     </script>
 </body>
 </html>
