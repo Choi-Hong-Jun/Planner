@@ -125,7 +125,7 @@
     <title>진호형의 시간표</title>
 </head>
 
-<body>
+<body data-day="mon">
     <h1>진호형의 시간표</h1>
 
     <div class="button-container">
@@ -218,6 +218,9 @@
     </div>
 
     <script>
+
+	const dayPrefix = document.body.getAttribute('data-day');
+	    
         function addActivity(hour) {
             let activity = prompt(`${hour}시의 활동을 입력하세요:`);
             if (activity) {
@@ -227,17 +230,17 @@
         }
 
 	function saveActivity(hour, activityName) {
-            localStorage.setItem(`activity-${hour}`, activityName);
-        }
+    		localStorage.setItem(`${dayPrefix}-activity-${hour}`, activityName);
+	}
 
         function loadActivities() {
-            for (let hour = 1; hour <= 24; hour++) {
-                const activity = localStorage.getItem(`activity-${hour}`);
-                if (activity) {
-                    document.getElementById(`activity-${hour}`).textContent = activity;
-                }
-            }
-        }
+    		for (let hour = 1; hour <= 24; hour++) {
+        		const activity = localStorage.getItem(`${dayPrefix}-activity-${hour}`);
+        		if (activity) {
+            		document.getElementById(`activity-${hour}`).textContent = activity;
+        		}
+    		}
+	}
 
         window.onload = loadActivities;
     </script>
